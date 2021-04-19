@@ -1,3 +1,5 @@
+import os
+
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
@@ -5,8 +7,9 @@ import imutils
 import easyocr
 
 def activering():
+
     #Afbeelding inlezen en grijstinten toevoegen
-    img = cv2.imread('test3.jpg')
+    img = cv2.imread('Logica/test3.jpg')
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
 
@@ -28,8 +31,6 @@ def activering():
             location = approx
             break
 
-    print(location)
-
     #Toevoegen van een mask over de contouren
     mask = np.zeros(gray.shape, np.uint8)
     new_image = cv2.drawContours(mask, [location], 0, 255, -1)
@@ -46,4 +47,4 @@ def activering():
     #Easy OCR gebruiken om tekst uit de afbeelding te lezen
     reader = easyocr.Reader(['en'])
     result = reader.readtext(cropped_image)
-    print(result[0][-2])
+    return result[0][-2]

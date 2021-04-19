@@ -1,10 +1,7 @@
-import keyboard
-import Kenteken_Uitlezen
-import Database_Connection
-import Rest_Service
+from Logica import Kenteken_Uitlezen
+from Services import Rest_Service
+from Logica import Kenteken_Controleren
 
-#while True:
- #   if keyboard.is_pressed('k'):
-Rest_Service.getjSON()
-Database_Connection.select("/Users/kevinkentie/Documents/Programmeren/SQLite Databases/Innovatieve_Parkeergarage.db")
-Kenteken_Uitlezen.activering()
+print(Kenteken_Controleren.checkReservering("SP-800-H"))
+print(Kenteken_Controleren.checkReservering("WP-110-S"))
+print(Kenteken_Controleren.checkReservering("99-RS-1000"))
