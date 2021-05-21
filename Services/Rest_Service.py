@@ -96,7 +96,7 @@ def updateAccount(account_id, saldo):
     encodedSaldo = encodedSaldo.replace("+", "%2B")
 
     responseEnc = requests.get(
-        "http://localhost:8080/account/update/" + encodedAccount_Id + "/" +encodedSaldo+"/4PlSfJj3PXz%2FLR%2Bqahuc7A==/nLdiqyrWM%2BkxxasxXscPF0Qt3sovUmjJ9S83NFcaU6LltU7mS4jaRXd0oRooDuSM")
+        "http://localhost:8080/account/updatemin/" + encodedAccount_Id + "/" +encodedSaldo+"/4PlSfJj3PXz%2FLR%2Bqahuc7A==/nLdiqyrWM%2BkxxasxXscPF0Qt3sovUmjJ9S83NFcaU6LltU7mS4jaRXd0oRooDuSM")
     try:
         response = AES128.AESCipher.decrypt(cryptor, responseEnc.text)
         string = '{"response": ' + response.strip(" ") + '}'
@@ -114,7 +114,9 @@ def createTransactie(kosten,account_id):
     datum = date.today().strftime("%d-%m-%Y")
     tijd = datetime.now().strftime("%H:%M")
 
-    encodedKosten = AES128.AESCipher.encrypt(cryptor, str(kosten)).decode("utf-8")
+
+    kostenMin = "-"+str(kosten)
+    encodedKosten = AES128.AESCipher.encrypt(cryptor, str(kostenMin)).decode("utf-8")
     encodedKosten = encodedKosten.replace("/", "%2F")
     encodedKosten = encodedKosten.replace("+", "%2B")
 

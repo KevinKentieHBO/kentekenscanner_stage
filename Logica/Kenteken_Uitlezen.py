@@ -6,10 +6,10 @@ import numpy as np
 import imutils
 import easyocr
 
-def activering():
+def activering(afbeelding):
 
     #Afbeelding inlezen en grijstinten toevoegen
-    img = cv2.imread('Logica/test3.jpg')
+    img = cv2.imread(afbeelding)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
 
